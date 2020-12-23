@@ -7,6 +7,9 @@ export const videoPlayerInit = () => {
     const videoTimePassed = document.querySelector('.video-time__passed');
     const videoProgress = document.querySelector('.video-progress');
     const videoTimeTotal = document.querySelector('.video-time__total');
+    const videoVolume = document.querySelector('.video-volume');
+    const videoMute = document.querySelector('.video-icon-mute');
+    const videoFullscreen = document.querySelector('.video-fullscreen');
 
     //Функция смены иконок "плей" и "пауза"
     const iconToggle = () => {
@@ -53,8 +56,8 @@ export const videoPlayerInit = () => {
         //отображение прогресса
         videoProgress.value = (currentTime / duration) * 100;
 
-        videoTimePassed.textContent = addZero(minutePassed) + ':' + addZero(secondPassed);
-        videoTimeTotal.textContent = addZero(minuteTotal) + ':' + addZero(secondTotal);
+        videoTimePassed.textContent = `${addZero(minutePassed)}:${addZero(secondPassed)}`;
+        videoTimeTotal.textContent = `${addZero(minuteTotal)}:${addZero(secondTotal)}`;
     };
 
     //изминение прогресса при клике на дорожку
@@ -63,6 +66,22 @@ export const videoPlayerInit = () => {
         const value = videoProgress.value;
 
         videoPlayer.currentTime = (value * duration) / 100;
+    };
+
+    //регулировка громкости
+    const changeVideoVolume = () => {
+        const value = videoVolume.value;
+        videoPlayer.volume = value / 100;
+    };
+
+    //Выключение звука
+    const mute = () => {
+        if(videoPlayer.muted == false)
+        {
+            videoPlayer.muted = true;
+        } else {
+            videoPlayer.muted = false;
+        }
     };
 
     videoPlayer.addEventListener('click', togglePlay);
@@ -77,6 +96,16 @@ export const videoPlayerInit = () => {
 
     videoPlayer.addEventListener('timeupdate', timeUpdate);
 
-    videoProgress.addEventListener('change', changeVideoTime);
+    videoProgress.addEventListener('input', changeVideoTime);
+
+    videoVolume.addEventListener('input', changeVideoVolume);
+
+    changeVideoVolume();
+
+    videoMute.addEventListener('click', mute);
+
+    videoFullscreen.addEventListener('click', () => {
+        videoPlayer.requestFullscreen();
+    });
 
 };
