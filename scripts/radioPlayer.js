@@ -102,5 +102,10 @@ export const radioPlayerInit = () => {
 
    changeRadioVolume();
 
+   radioPlayerInit.stop = () => {
+       audio.pause();
+       changeIcon();
+   };
+
 
 };

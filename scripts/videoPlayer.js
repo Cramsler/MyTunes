@@ -108,4 +108,9 @@ export const videoPlayerInit = () => {
         videoPlayer.requestFullscreen();
     });
 
+    videoPlayerInit.stop = () => {
+        videoPlayer.pause();
+        iconToggle();
+    };
+
 };
