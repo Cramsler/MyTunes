@@ -115,7 +115,8 @@ export const musicPlayerInit = () => {
 
    loadTrack();
 
-    musicPlayerInit.stop = () => {
+   //Отключение плеера при переходе по вкладкам
+   musicPlayerInit.stop = () => {
 
         if(!audioPlayer.paused)
         {
