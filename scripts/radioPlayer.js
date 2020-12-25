@@ -1,5 +1,6 @@
 export const radioPlayerInit = () => {
-   const radio = document.querySelector('.radio');
+  
+    const radio = document.querySelector('.radio');
    const radioCoverImg = document.querySelector('.radio-cover__img');
    const radioHeader = document.querySelector('.radio-header__big');
    const radioNavigation = document.querySelector('.radio-navigation');
@@ -106,6 +107,5 @@ export const radioPlayerInit = () => {
        audio.pause();
        changeIcon();
    };
-
 
 };

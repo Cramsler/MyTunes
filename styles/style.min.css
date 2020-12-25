@@ -34,3 +34,15 @@ input.radio-volume{
     margin-right: 20px;
     cursor: pointer;
 }
+
+.audio-icon-mute{
+    margin-left: 50px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+input.audio-volume{
+    max-width:120px;
+    margin-right: 10px;
+    margin-left: 10px;
+}

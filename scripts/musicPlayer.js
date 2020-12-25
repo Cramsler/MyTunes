@@ -1,5 +1,6 @@
 export const musicPlayerInit = () => {
-   const audio = document.querySelector('.audio');
+  
+    const audio = document.querySelector('.audio');
    const audioImg = document.querySelector('.audio-img');
    const audioHeader = document.querySelector('.audio-header');
    const audioPlayer = document.querySelector('.audio-player');
@@ -10,6 +11,8 @@ export const musicPlayerInit = () => {
    const audioProgressTiming = document.querySelector('.audio-progress__timing');
    const audioTimePassed = document.querySelector('.audio-time__passed');
    const audioTimeTotal = document.querySelector('.audio-time__total');
+   const audioVolume = document.querySelector('.audio-volume');
+   const audioMute = document.querySelector('.audio-icon-mute');
 
    //Создаем массив трков
    const playList = ['flow', 'hello', 'speed'];
@@ -92,6 +95,23 @@ export const musicPlayerInit = () => {
 
    };
 
+   //Регулеровка громкости
+   const changeVolume = () => {
+       const value = audioVolume.value;
+
+       audioPlayer.volume = value / 100;
+   };
+
+   //Выключение звука
+   const mute = () => {
+    if(audioPlayer.muted == false)
+        {
+            audioPlayer.muted = true;
+        } else {
+            audioPlayer.muted = false;
+        }
+   };
+
 
    audioButtonPlay.addEventListener('click', trackPlay);
 
@@ -113,6 +133,8 @@ export const musicPlayerInit = () => {
        audioPlayer.currentTime = progress;
    });
 
+   audioVolume.addEventListener('input', changeVolume);
+
    loadTrack();
 
    //Отключение плеера при переходе по вкладкам
@@ -127,4 +149,7 @@ export const musicPlayerInit = () => {
         }
 
     };
+
+    audioMute.addEventListener('click', mute);
+
 };
